@@ -1,0 +1,18 @@
+﻿@model SchoolMVC.Models.address
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Address</h4>
+</div>
+<div class="modal-body">
+    <strong>Address 1: </strong>
+    @Html.TextBoxFor(a => a.address1, new { @class = "form-control" })
+    <strong>Address 2:</strong>
+    @Html.TextBoxFor(a => a.address2, new { @class = "form-control" })
+    <strong>City:</strong>
+    @Html.TextBoxFor(a => a.city, new { @class = "form-control" })
+    <strong>State:</strong>
+    @Html.TextBoxFor(a => a.state, new { @class = "form-control" })
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>

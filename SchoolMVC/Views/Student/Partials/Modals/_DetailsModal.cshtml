@@ -1,0 +1,31 @@
+﻿@model SchoolMVC.Models.ViewModel
+@using (Ajax.BeginForm("Edit", "Student", new AjaxOptions { HttpMethod = "POST", OnSuccess = "LoadStudentTable('')" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Customer Details</h4>
+    </div>
+    <div class="modal-body">
+        @Html.HiddenFor(s => s.Student.studentID)
+        <strong>Name:</strong>
+        @Html.TextBoxFor(s => s.Student.studentName, new { @class = "form-control" })
+        <strong>Address 1:</strong>
+        @Html.TextBoxFor(s => s.Student.address.address1, new { @class = "form-control" })
+        <strong>Address 2:</strong>
+        @Html.TextBoxFor(s => s.Student.address.address2, new { @class = "form-control" })
+        <strong>City:</strong>
+        @Html.TextBoxFor(s => s.Student.address.city, new { @class = "form-control" })
+        <strong>State:</strong>
+        @Html.TextBoxFor(s => s.Student.address.state, new { @class = "form-control" })
+        <strong>Standard:</strong>
+        @Html.DropDownListFor(s => s.Standard.standardID, ViewBag.StandardItems as IEnumerable<SelectListItem>, new { @class = "form-control" })
+        <strong>Row Version:</strong>
+        @Html.TextBoxFor(s => s.Student.rowVersion, new { @class = "form-control" })
+    </div>
+    <div class="modal-footer">
+        <button class="hidden" type="submit" id="BtnConfirmSaveUpdate"></button>
+        <button class="btn btn-primary" type="button" id="BtnSaveUpdate">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+}

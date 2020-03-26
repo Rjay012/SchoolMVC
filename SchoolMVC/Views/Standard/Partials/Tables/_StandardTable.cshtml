@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SchoolMVC.Models.Standard>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th></th>
+            <th class="text-center">Standard Name</th>
+            <th class="text-center">Description</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.ToList())
+        {
+            <tr>
+                <td class="text-center">@item.standardID</td>
+                <td class="text-center">@item.standardName</td>
+                <td class="text-center">@item.description</td>
+                <td class="text-center">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModalEdit" onclick="EditDetails(@item.standardID)" type="button">EDIT</button>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-danger" type="button" onclick="Remove(@item.standardID)">DELETE</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

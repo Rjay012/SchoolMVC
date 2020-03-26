@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SchoolMVC.Models.ViewModel>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="text-center">Student ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Standard</th>
+            <th class="text-center">Row Version</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">@item.Student.studentID</td>
+                <td class="text-center">@item.Student.studentName</td>
+                <td class="text-center">@item.Standard.standardName</td>
+                <td class="text-center">@item.Student.rowVersion</td>
+                <td class="text-center">
+                    <button class="btn btn-success" type="button" data-toggle="modal" data-target="#myModalViewAddress" onclick="ViewAddress(@item.Student.studentID)">VIEW ADDRESS</button>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModalEditCustomer" onclick="ViewDetails(@item.Student.studentID)">EDIT</button>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-danger" type="button" onclick="Remove(@item.Student.studentID)">DELETE</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

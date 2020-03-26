@@ -1,0 +1,21 @@
+﻿@model SchoolMVC.Models.Standard
+@using (Ajax.BeginForm("Edit", "Standard", new AjaxOptions { HttpMethod = "POST", OnSuccess = "LoadStandardTable('')" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Standard</h4>
+    </div>
+    <div class="modal-body">
+        @Html.HiddenFor(s => s.standardID)
+        <strong>Standard Name: </strong>
+        @Html.TextBoxFor(s => s.standardName, new { @class = "form-control", @placeholder = "Standard Name" })
+        <strong>Description: </strong>
+        @Html.TextBoxFor(s => s.description, new { @class = "form-control", @placeholder = "Description" })
+    </div>
+    <div class="modal-footer">
+        <button class="hidden" type="submit" id="BtnConfirmEditStandard"></button>
+        <button class="btn btn-primary" type="button" id="BtnEditStandard">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+}
