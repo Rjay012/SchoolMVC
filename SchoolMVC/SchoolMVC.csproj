@@ -142,6 +142,7 @@
     <Compile Include="Models\course.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataTableParam.cs" />
     <Compile Include="Models\SchoolDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -176,6 +177,48 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables-1.10.20.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.responsive-2.2.3.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.rowReorder-1.2.6.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\images\sort_asc.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\images\sort_both.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\images\sort_desc.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\jQuery-3.3.1\jquery-3.3.1.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\jQuery-3.3.1\jquery-3.3.1.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.bootstrap.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.bootstrap.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.bootstrap4.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.foundation.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.foundation.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.jquery-1.10.20.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.jquery-3.3.1.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.jqueryui.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.jqueryui.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.responsive-2.2.3.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.rowReorder.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.semanticui.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.semanticui.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\jquery.dataTables.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\jquery.dataTables.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\datatables.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\datatables.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\datatables.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\datatables.min.js" />
     <Content Include="Content\DataTables\DataTables-1.10.20\css\dataTables.bootstrap.css" />
     <Content Include="Content\DataTables\DataTables-1.10.20\css\dataTables.bootstrap.min.css" />
     <Content Include="Content\DataTables\DataTables-1.10.20\css\dataTables.bootstrap4.css" />
@@ -205,10 +248,10 @@
     <Content Include="Content\DataTables\DataTables-1.10.20\js\dataTables.semanticui.min.js" />
     <Content Include="Content\DataTables\DataTables-1.10.20\js\jquery.dataTables.js" />
     <Content Include="Content\DataTables\DataTables-1.10.20\js\jquery.dataTables.min.js" />
-    <Content Include="Content\DataTables\datatables.css" />
-    <Content Include="Content\DataTables\datatables.js" />
-    <Content Include="Content\DataTables\datatables.min.css" />
-    <Content Include="Content\DataTables\datatables.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.20\datatables.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.20\datatables.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.20\datatables.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.20\datatables.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

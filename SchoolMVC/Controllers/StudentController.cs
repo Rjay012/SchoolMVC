@@ -1,4 +1,6 @@
-﻿using SchoolMVC.Models;
+﻿using Newtonsoft.Json;
+using SchoolMVC.Models;
+using SchoolMVC.Models.StandardModels;
 using SchoolMVC.Models.StudentModels;
 using System;
 using System.Collections.Generic;
@@ -19,22 +21,41 @@ namespace SchoolMVC.Controllers
             return View();
         }
 
-        public ActionResult Table(string searchString)
+        public ActionResult Table(DataTableParam param)
         {
             var StudentModel = (from i in SDBE.students
                                 join x in SDBE.Standards on i.standardID equals x.standardID
-                                select new ViewModel
+                                select new 
                                 {
-                                    Student = i,
-                                    Standard = x
-                                }).OrderByDescending(i => i.Student.studentID).ToList();
+                                    i.studentID, i.studentName, x.standardID, x.standardName, i.rowVersion
+                                }).ToList();
 
-            if (!String.IsNullOrEmpty(searchString))  //search
+            if (!String.IsNullOrEmpty(param.sSearch))  //search
             {
-                StudentModel = StudentModel.Where(i => i.Student.studentName.Contains(searchString) || i.Student.Standard.standardName.Contains(searchString)).ToList();
+                StudentModel = StudentModel.Where(i => i.studentName.Contains(param.sSearch) || i.standardName.Contains(param.sSearch)).ToList();
             }
 
-            return PartialView("Partials/Tables/_StudentTable", StudentModel);
+            switch (param.iSortCol_0)  //column sorting
+            {
+                case 0:
+                    StudentModel = param.sSortDir_0 == "asc" ? StudentModel.OrderBy(c => c.studentID).ToList() : StudentModel.OrderByDescending(c => c.studentID).ToList();
+                    break;
+                case 1:
+                    StudentModel = param.sSortDir_0 == "asc" ? StudentModel.OrderBy(c => c.studentName).ToList() : StudentModel.OrderByDescending(c => c.studentName).ToList();
+                    break;
+                case 2:
+                    StudentModel = param.sSortDir_0 == "asc" ? StudentModel.OrderBy(c => c.standardName).ToList() : StudentModel.OrderByDescending(c => c.standardName).ToList();
+                    break;
+            }
+            //pagination
+            var displayResult = StudentModel.Skip(param.iDisplayStart).Take(param.iDisplayLength).ToList();
+
+            return Json(new {
+                aaData = displayResult,
+                param.sEcho,
+                iTotalRecords = StudentModel.Count(),
+                iTotalDisplayRecords = StudentModel.Count()
+            }, JsonRequestBehavior.AllowGet);
         }
 
         private IEnumerable<SelectListItem> GetStandardListItems()

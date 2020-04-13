@@ -2,18 +2,41 @@
     LoadStudentTable("");
 });
 
+function LoadTableViaServerSideProcess(id, ajaxSourceString) {
+    
+}
+
 function LoadStudentTable(searchString) {
-    FetchData("/Student/Table", { searchString: searchString })
-        .done(function (result) {
-            $("#TableForm").html(result);
-        });
+    //LoadTableViaServerSideProcess("", "/Student/Table");
+    $('#StudentTable').DataTable({
+        lengthMenu: [[2, 10, 15], [2, 10, 15]],
+        processing: true,
+        bPaginate: true,
+        bServerSide: true,
+        sAjaxSource: "/Student/Table",
+        fnServerData: function (sSource, aoData, fnCallBack) {
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                data: aoData,
+                url: sSource,
+                success: fnCallBack
+            });
+        },
+        columns: [
+            { 'data': 'studentID' },
+            { 'data': 'studentName' },
+            { 'data': 'standardName' },
+            { 'data': 'rowVersion' }
+        ]
+    });
 }
 
 function ViewAddress(addressID) {
     FetchData("/Student/AddressModal", { addressID: addressID })
         .done(function (modalContent) {
             $("#ViewAddressModalContent").html(modalContent);
-        }); 
+        });
 }
 
 function ViewDetails(studentID) {
