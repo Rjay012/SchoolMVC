@@ -1,5 +1,5 @@
 ﻿@model SchoolMVC.Models.ViewModel
-@using (Ajax.BeginForm("Edit", "Student", new AjaxOptions { HttpMethod = "POST", OnSuccess = "LoadStudentTable('')" }))
+@using (Ajax.BeginForm("Edit", "Student", new AjaxOptions { HttpMethod = "POST", OnSuccess = "LoadStudentTable()" }))
 {
     @Html.AntiForgeryToken()
     <div class="modal-header">

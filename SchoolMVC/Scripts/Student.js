@@ -1,35 +1,25 @@
 ﻿$(document).ready(function () {
-    LoadStudentTable("");
+    LoadStudentTable();
 });
 
-function LoadTableViaServerSideProcess(id, ajaxSourceString) {
-    
-}
-
-function LoadStudentTable(searchString) {
-    //LoadTableViaServerSideProcess("", "/Student/Table");
-    $('#StudentTable').DataTable({
-        lengthMenu: [[2, 10, 15], [2, 10, 15]],
-        processing: true,
-        bPaginate: true,
-        bServerSide: true,
-        sAjaxSource: "/Student/Table",
-        fnServerData: function (sSource, aoData, fnCallBack) {
-            $.ajax({
-                type: "post",
-                dataType: "json",
-                data: aoData,
-                url: sSource,
-                success: fnCallBack
-            });
+function LoadStudentTable() {
+    var columns = [{ 'data': 'studentID' }, { 'data': 'studentName' }, { 'data': 'standardName' }, { 'data': 'rowVersion' },
+        {
+            'data': 'studentID', render: function (studentID, type, row) {
+                return "<button class='btn btn-success' type='button' data-toggle='modal' data-target='#myModalViewAddress' onclick='ViewAddress(" + studentID + ")'>VIEW ADDRESS</button>";
+            }
         },
-        columns: [
-            { 'data': 'studentID' },
-            { 'data': 'studentName' },
-            { 'data': 'standardName' },
-            { 'data': 'rowVersion' }
-        ]
-    });
+        {
+            'data': 'studentID', render: function (studentID, type, row) {
+                return "<button class='btn btn-primary' type='button' data-toggle='modal' data-target='#myModalEditCustomer' onclick='ViewDetails(" + studentID + ")'>EDIT</button>";
+            }
+        },
+        {
+            'data': 'studentID', render: function (studentID, type, row) {
+                return "<button class='btn btn-danger' type='button' onclick='Remove(" + studentID + ")'>REMOVE</button>";
+            }
+        }];
+    LoadTableViaServerSideProcess("StudentTable", "/Student/Table", columns);
 }
 
 function ViewAddress(addressID) {
@@ -50,7 +40,7 @@ function Remove(studentID) {
     if (confirm("Sure to delete?") == true) {
         FetchData("/Student/Delete", { studentID: studentID })
             .done(function () {
-                LoadStudentTable("");
+                LoadStudentTable();
             });
     }
 }
@@ -73,8 +63,4 @@ $(document).on("click", "#BtnSaveUpdate", function () {
     if (confirm("Edit Student?") == true) {
         $("#BtnConfirmSaveUpdate").click();
     }
-});
-
-$(document).on("keyup", "#txtSearch", function () {
-    LoadStudentTable($(this).val());
 });

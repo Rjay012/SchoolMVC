@@ -1,5 +1,5 @@
 ﻿@model SchoolMVC.Models.StudentModels.StudentModel
-@using (Ajax.BeginForm("SaveNew", "Student", new AjaxOptions { HttpMethod = "POST", OnSuccess = "LoadStudentTable('')" }))
+@using (Ajax.BeginForm("SaveNew", "Student", new AjaxOptions { HttpMethod = "POST", OnSuccess = "LoadStudentTable()" }))
 {
     @Html.AntiForgeryToken()
     <div class="modal-header">

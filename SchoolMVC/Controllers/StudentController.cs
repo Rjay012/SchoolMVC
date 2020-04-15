@@ -32,7 +32,9 @@ namespace SchoolMVC.Controllers
 
             if (!String.IsNullOrEmpty(param.sSearch))  //search
             {
-                StudentModel = StudentModel.Where(i => i.studentName.Contains(param.sSearch) || i.standardName.Contains(param.sSearch)).ToList();
+                StudentModel = StudentModel.Where(i => i.studentName.Contains(param.sSearch) || 
+                                                       i.standardName.Contains(param.sSearch) ||
+                                                       i.rowVersion.Contains(param.sSearch)).ToList();
             }
 
             switch (param.iSortCol_0)  //column sorting
@@ -46,7 +48,11 @@ namespace SchoolMVC.Controllers
                 case 2:
                     StudentModel = param.sSortDir_0 == "asc" ? StudentModel.OrderBy(c => c.standardName).ToList() : StudentModel.OrderByDescending(c => c.standardName).ToList();
                     break;
+                case 3:
+                    StudentModel = param.sSortDir_0 == "asc" ? StudentModel.OrderBy(c => c.rowVersion).ToList() : StudentModel.OrderByDescending(c => c.rowVersion).ToList();
+                    break;
             }
+
             //pagination
             var displayResult = StudentModel.Skip(param.iDisplayStart).Take(param.iDisplayLength).ToList();
 
