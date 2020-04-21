@@ -1,8 +1,9 @@
 ﻿$(document).ready(function () {
-    LoadStudentTable();
+    LoadStudentTable("");
 });
 
-function LoadStudentTable() {
+function LoadStudentTable(data) {
+    alert(JSON.stringify(data));
     var columns = [{ 'data': 'studentID' }, { 'data': 'studentName' }, { 'data': 'standardName' }, { 'data': 'rowVersion' },
         {
             'data': 'studentID', render: function (studentID, type, row) {
@@ -40,7 +41,7 @@ function Remove(studentID) {
     if (confirm("Sure to delete?") == true) {
         FetchData("/Student/Delete", { studentID: studentID })
             .done(function () {
-                LoadStudentTable();
+                LoadStudentTable("");
             });
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using SchoolMVC.Models.AddressModels;
+using SchoolMVC.Models.StandardModels;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,26 +15,20 @@ namespace SchoolMVC.Models.StudentModels
         [DisplayName("Student ID:")]
         public int StudentID { get; set; }
         [Required]
-        [StringLength(100, MinimumLength = 6)]
+        [MaxLength(100), MinLength(6)]
         [DisplayName("Student Name:")]
         public string StudentName { get; set; }
         [Required]
-        [ForeignKey("Standard")]
+        [ForeignKey("StandardModel")]
         [DisplayName("Standard:")]
         public int StandardID { get; set; }
         [Required]
         [StringLength(50)]
         [DisplayName("Row Version:")]
         public string RowVersion { get; set; }
-        [Required]
-        [DisplayName("Address 1:")]
-        public string Address1 { get; set; }
-        [DisplayName("Address 2:")]
-        public string Address2 { get; set; }
-        [DisplayName("City:")]
-        public string City { get; set; }
-        [DisplayName("State:")]
-        public string State { get; set; }
+
+        public AddressModel Address { get; set; }
+        public StandardModel Standard { get; set; }
 
         public IEnumerable<SelectListItem> SelectListStandard { get; set; }
     }

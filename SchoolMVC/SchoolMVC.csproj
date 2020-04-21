@@ -139,6 +139,7 @@
     <Compile Include="Models\address.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddressModels\AddressModel.cs" />
     <Compile Include="Models\course.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>

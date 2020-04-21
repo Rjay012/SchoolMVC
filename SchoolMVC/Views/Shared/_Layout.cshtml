@@ -7,8 +7,10 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <!--BEGIN DATATABLES-->
     @*<link href="~/Content/DataTables/DataTables-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />*@
     <link href="~/Content/DataTables/DataTables-1.10.20/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <!--END DATATABLES-->
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -40,12 +42,15 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 
+    <!--BEGIN DATATABLES-->
     <script src="~/Content/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.bootstrap.min.js"></script>
-    <!--BEGIN UNOBTRUSIVE VALIDATION-->
+    <!--END DATATABLES-->
+    <!--BEGIN UNOBTRUSIVE VALIDATION
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>-->
     <!--END UNOBTRUSIVE VALIDATION-->
-    <!--BEGIN UNOBTRUSIVE AJAX
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>-->
+    <!--BEGIN UNOBTRUSIVE AJAX-->
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <!--END UNOBTRUSIVE AJAX-->
     <!--BEGIN CUSTOMIZED JS-->

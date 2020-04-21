@@ -1,4 +1,5 @@
 ﻿function LoadTableViaServerSideProcess(id, url, projectColumn) {
+    $("#" + id).DataTable().clear().destroy();
     $('#' + id).DataTable({
         lengthMenu: [[5, 10, 15], [5, 10, 15]],
         processing: true,

@@ -21,7 +21,7 @@ namespace SchoolMVC.Controllers
             return View();
         }
 
-        public ActionResult Table(DataTableParam param)
+        public ActionResult Table(DataTableParam param)  //Load Student's Table Via Server Side Processing
         {
             var StudentModel = (from i in SDBE.students
                                 join x in SDBE.Standards on i.standardID equals x.standardID
@@ -116,12 +116,11 @@ namespace SchoolMVC.Controllers
                 student.address = new address
                 {
                     addressID = studentModel.StudentID,  //foreign key
-                    address1 = studentModel.Address1,
-                    address2 = studentModel.Address2,
-                    city = studentModel.City,
-                    state = studentModel.State
+                    address1 = studentModel.Address.Address1,
+                    address2 = studentModel.Address.Address2,
+                    city = studentModel.Address.City,
+                    state = studentModel.Address.State
                 };
-
                 SDBE.students.Add(student);
                 SDBE.SaveChanges();
             }

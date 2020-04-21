@@ -1,6 +1,6 @@
 ﻿@model SchoolMVC.Models.StudentModels.StudentModel
-@using (Ajax.BeginForm("SaveNew", "Student", new AjaxOptions { HttpMethod = "POST", OnSuccess = "LoadStudentTable()" }))
-{
+@using (Ajax.BeginForm("SaveNew", "Student", new AjaxOptions { HttpMethod = "POST", OnSuccess = "LoadStudentTable(data)" }))
+{   
     @Html.AntiForgeryToken()
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -15,14 +15,15 @@
             <div class="form-group">
                 @Html.LabelFor(s => s.StudentName)
                 @Html.TextBoxFor(s => s.StudentName, new { @class = "form-control", @placeholder = "Student Name" })
+                @Html.ValidationMessageFor(s => s.StudentName, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">
-                @Html.LabelFor(s => s.Address1)
-                @Html.TextBoxFor(s => s.Address1, new { @class = "form-control", @placeholder = "Address 1" })
+                @Html.LabelFor(s => s.Address.Address1)
+                @Html.TextBoxFor(s => s.Address.Address1, new { @class = "form-control", @placeholder = "Address 1" })
             </div>
             <div class="form-group">
-                @Html.LabelFor(s => s.Address2)
-                @Html.TextBoxFor(s => s.Address2, new { @class = "form-control", @placeholder = "Address 2" })
+                @Html.LabelFor(s => s.Address.Address2)
+                @Html.TextBoxFor(s => s.Address.Address2, new { @class = "form-control", @placeholder = "Address 2" })
             </div>
         </div>
         <div class="col-md-6">
@@ -35,12 +36,12 @@
                 @Html.TextBoxFor(s => s.RowVersion, new { @class = "form-control", @placeholder = "Row Version" })
             </div>
             <div class="form-group">
-                @Html.LabelFor(s => s.City)
-                @Html.TextBoxFor(s => s.City, new { @class = "form-control", @placeholder = "City" })
+                @Html.LabelFor(s => s.Address.City)
+                @Html.TextBoxFor(s => s.Address.City, new { @class = "form-control", @placeholder = "City" })
             </div>
             <div class="form-group">
-                @Html.LabelFor(s => s.State)
-                @Html.TextBoxFor(s => s.State, new { @class = "form-control", @placeholder = "State" })
+                @Html.LabelFor(s => s.Address.State)
+                @Html.TextBoxFor(s => s.Address.State, new { @class = "form-control", @placeholder = "State" })
             </div>
         </div>
     </div>
